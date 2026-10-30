@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz Rejestracji Wizyty</title>
+</head>
+<body>
+<h2>Formularz Rejestracji Wizyty w Salonie Kosmetycznym</h2>
+
+<form th:action="@{/formularz}" th:object="${wizyta}" method="post">
+
+    <div>
+        <label>Nazwa usługi:</label><br>
+        <input type="text" th:field="*{nazwa}"/>
+        <p th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Cena (np. 150.00):</label><br>
+        <input type="text" th:field="*{cena}"/>
+        <p th:if="${#fields.hasErrors('cena')}" th:errors="*{cena}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Data wizyty:</label><br>
+        <input type="date" th:field="*{dataWizyty}"/>
+        <p th:if="${#fields.hasErrors('dataWizyty')}" th:errors="*{dataWizyty}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Adres (format: ulica; nrBudynku; kodPocztowy; miejscowosc):</label><br>
+        <input type="text" th:field="*{adres}" placeholder="np. Kwiatowa; 12; 00-950; Warszawa"/>
+        <p th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <button type="submit">Zapisz wizytę</button>
+    </div>
+</form>
+</body>
+</html>

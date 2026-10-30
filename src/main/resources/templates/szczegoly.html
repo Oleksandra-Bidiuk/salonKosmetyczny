@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły wizyty</title>
+</head>
+<body>
+<h1>Szczegóły wizyty</h1>
+
+<p><strong>ID:</strong> <span th:text="${wizyta.id}"></span></p>
+<p><strong>Imię klienta:</strong> <span th:text="${wizyta.imie}"></span></p>
+<p><strong>Telefon:</strong> <span th:text="${wizyta.telefon}"></span></p>
+<p><strong>Zabieg:</strong> <span th:text="${wizyta.nazwa}"></span></p>
+<p><strong>Cena:</strong> <span th:text="${wizyta.cena}"></span> zł</p>
+<p><strong>Data wizyty:</strong> <span th:text="${wizyta.dataWizyty}"></span></p>
+<p><strong>Godzina:</strong> <span th:text="${wizyta.godzina}"></span></p>
+
+<div th:if="${wizyta.adres != null}">
+    <p><strong>Adres:</strong>
+        <span th:text="${wizyta.adres.ulica}"></span>,
+        <span th:text="${wizyta.adres.nrBudynku}"></span>,
+        <span th:text="${wizyta.adres.kodPocztowy}"></span>
+        <span th:text="${wizyta.adres.miejscowosc}"></span>
+    </p>
+</div>
+
+<p>
+    <a th:href="@{/wizyty}">Powrót do listy wizyt</a>
+</p>
+</body>
+</html>

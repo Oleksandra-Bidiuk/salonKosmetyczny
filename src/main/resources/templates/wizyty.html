@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista wizyt</title>
+</head>
+<body>
+<h1>Lista wizyt w salonie</h1>
+<p>
+    <a th:href="@{/}">Strona główna</a> |
+    <a th:href="@{/formularz}">Dodaj nową wizytę</a>
+</p>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Telefon</th>
+        <th>Zabieg</th>
+        <th>Cena</th>
+        <th>Data</th>
+        <th>Godzina</th>
+        <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wizyta : ${wizyty}">
+        <td th:text="${wizyta.id}"></td>
+        <td th:text="${wizyta.imie}"></td>
+        <td th:text="${wizyta.telefon}"></td>
+        <td th:text="${wizyta.nazwa}"></td>
+        <td th:text="${wizyta.cena}"></td>
+        <td th:text="${wizyta.dataWizyty}"></td>
+        <td th:text="${wizyta.godzina}"></td>
+        <td>
+            <a th:href="@{/wizyty/szczegoly/{id}(id=${wizyta.id})}">Szczegóły</a> |
+            <a th:href="@{/wizyty/edytuj/{id}(id=${wizyta.id})}">Edytuj</a> |
+            <form th:action="@{/wizyty/usun/{id}(id=${wizyta.id})}" method="post" style="display:inline;">
+                <button type="submit">Usuń</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

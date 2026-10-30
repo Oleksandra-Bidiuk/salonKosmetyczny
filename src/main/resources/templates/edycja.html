@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja wizyty</title>
+</head>
+<body>
+<h2>Edycja wizyty</h2>
+
+<form th:action="@{/wizyty/edytuj/{id}(id=${wizyta.id})}" th:object="${wizyta}" method="post">
+
+    <div>
+        <label>Imię:</label><br>
+        <input type="text" th:field="*{imie}"/>
+        <p th:if="${#fields.hasErrors('imie')}" th:errors="*{imie}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Telefon:</label><br>
+        <input type="text" th:field="*{telefon}"/>
+        <p th:if="${#fields.hasErrors('telefon')}" th:errors="*{telefon}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Nazwa usługi:</label><br>
+        <input type="text" th:field="*{nazwa}"/>
+        <p th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Cena:</label><br>
+        <input type="text" th:field="*{cena}"/>
+        <p th:if="${#fields.hasErrors('cena')}" th:errors="*{cena}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <label>Data wizyty:</label><br>
+        <input type="date" th:field="*{dataWizyty}"/>
+        <p th:if="${#fields.hasErrors('dataWizyty')}" th:errors="*{dataWizyty}" style="color:red;"></p>
+    </div>
+    <br>
+
+    <div>
+        <button type="submit">Zapisz zmiany</button>
+    </div>
+</form>
+
+<p>
+    <a th:href="@{/wizyty}">Anuluj</a>
+</p>
+</body>
+</html>
